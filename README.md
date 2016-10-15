@@ -1,50 +1,13 @@
-int sensorVal;
+This sketch was created to test my Proximity Switches, including LJ18A3-Z/BX and also LJ12A3-4-ZBX
+Before I use one of these switches, I'm testing them with the included sketch for Arduino.
+Arduino UNO and at the present time, I'm using Arduino version 1.6.11
 
-void setup() {
+The skect has Serial.print command to output the results to a COM port (Serial Monitor)
+Please set the com port to 230400 Baud Rate
+Resize the COM port to the smallest size 
+Turn off the Autoscroll
+And set NO LINE ENDING options (right bottom side of the COM port window)
+Credits to: Thanks to Dorian McIntire - his video : https://www.youtube.com/watch?v=soJ4czkKpT4
 
-  //configure pin2 as an input and enable the internal pull-up resistor
-  pinMode(2, INPUT_PULLUP);
+My youtube video:  https://www.youtube.com/watch?v=2INatmbOPEI
 
-  // initialize serial communications at 9600 bps:
-  Serial.begin(230400);
-
-  pinMode(11, OUTPUT);
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
-}
-
-void loop() {
-  sensorVal = digitalRead(2);
-  if (sensorVal == HIGH) {
-    digitalWrite(11, HIGH); digitalWrite(12, LOW); tone(13, 1000);
-
-    for (int i = 0; i <= 12; i++)
-      Serial.println();
-
-    Serial.print("SENSOR HAS DETECTED A METAL and/or ALUMINUM : ");
-    Serial.println("  YES ");
-    Serial.println("--------------------------------------------------- ");
-    Serial.print("SENSORS VALUE IS                            :   ");
-    Serial.println (sensorVal);
-    Serial.println("--------------------------------------------------- ");
-    delay (500);
-
-  }
-  else {
-    digitalWrite(11, LOW); digitalWrite(12, HIGH); noTone(13);
-delay (1000);
-   { for (int i = 0; i <= 6; i++)
-      Serial.println();
-
-    Serial.print("SENSOR HAS DETECTED A METAL and/or ALUMINUM : ");
-    Serial.println("  NO ");
-    Serial.println("--------------------------------------------------- ");
-    Serial.print("SENSORS VALUE IS                            :   ");
-    Serial.println (sensorVal);
-    Serial.println("--------------------------------------------------- ");
-
-    for (int i = 0; i <= 4; i++)
-      Serial.println();}
-
-  }
-}
